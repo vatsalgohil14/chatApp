@@ -4,13 +4,11 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 const Chatpage = () => {
-
-  
   return (
-   <div>
-    hell0000
-   </div>
-  )
-}
+    <div>
+      <h1>hello</h1>
+    </div>
+  );
+};
 
 export default Chatpage;

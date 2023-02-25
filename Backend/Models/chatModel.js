@@ -21,7 +21,7 @@ const chatModel = mongoose.Schema(
     latestMessage: [
       {
         type: mongoose.Schema.Types.ObjectId, // this will contian id to that user
-        ref: "Message",
+        // ref: "Message", abhi ke liye hataya hai fir kar dena add
       },
     ],
     groupAdmin: {
@@ -34,5 +34,5 @@ const chatModel = mongoose.Schema(
   }
 );
 
-const Chat = mongoose.model1("Chat", chatModel);
+const Chat = mongoose.model("Chat", chatModel);
 module.exports = Chat;

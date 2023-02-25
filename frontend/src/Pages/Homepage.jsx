@@ -3,6 +3,7 @@ import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import React from "react";
 import { Page_login } from "../Components/Authentication/Page_login";
 import Page_sign_up from "../Components/Authentication/Page_sign_up";
+import "../App.css";
 
 
 const Homepage = () => {
@@ -12,9 +13,9 @@ const Homepage = () => {
         d="flex"
         justifyContent="center"
         p={3}
-        bg={"yellow.100"}
+        bg={"blackAlpha.50"}
         w="100%"
-        m="40px 0 15px 0"
+        m="150px 0 15px 0"
         borderRadius="lg"
         borderWidth="1px"
       >
@@ -22,8 +23,8 @@ const Homepage = () => {
           Talk
         </Text>
       </Box>
-      <Box w="100%" p={4} borderRadius="lg" borderWidth="1px">
-        <Tabs isFitted variant="enclosed" colorScheme={"purple"}>
+      <Box w="100%" p={4} borderRadius="lg" borderWidth="1px" bg={"blackAlpha.50"}>
+        <Tabs isFitted variant="soft-rounded" colorScheme={"purple"}>
           <TabList mb="1em">
             <Tab width={"50%"}>Login</Tab>
             <Tab width={"50%"}>Sign Up</Tab>

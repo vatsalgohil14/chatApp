@@ -1,7 +1,8 @@
 const expressAsyncHandler = require("express-async-handler");
 const { Error } = require("mongoose");
-const User = require("../Models/userModel");
+const User = require("../models/userModel");
 const generateToken = require("../Config/generateToken");
+
 
 const registerUser = expressAsyncHandler(async (req, res) => {
   const { name, email, password, pic } = req.body;
@@ -43,7 +44,7 @@ const authUser = expressAsyncHandler(async (req, res) => {
 
   const user = await User.findOne({ email });
 
-  if (user &&(await user.matchPassword(password))) {
+  if (user && (await user.matchPassword(password))) {
     res.json({
       _id: user._id,
       name: user.name,
@@ -57,4 +58,22 @@ const authUser = expressAsyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { registerUser , authUser };
+
+// /api/user?search=piyush
+const allUsers = expressAsyncHandler(async(req,res)=>{
+ const keyword = req.query.search
+   ? {
+       $or: [
+         { name: { $regex: req.query.search, $options: "i" } },
+         { email: { $regex: req.query.search, $options: "i" } },
+       ],
+     }
+   : {};
+
+ const users = await User.find(keyword).find({ _id: { $ne: req.user._id } });
+ res.send(users);
+
+  console.log(keyword);
+})
+
+module.exports = { registerUser, authUser, allUsers };

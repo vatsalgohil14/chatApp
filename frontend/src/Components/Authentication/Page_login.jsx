@@ -16,9 +16,7 @@ import { useHistory } from "react-router-dom";
 
 export const Page_login = () => {
   const [email, setEmail] = useState();
-
   const [password, setPassword] = useState();
-
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
   const toast = useToast();
@@ -77,6 +75,7 @@ export const Page_login = () => {
   };
   return (
     <VStack spacing={"5px"}>
+      {/* For email */}
       <FormControl id="email" isRequired>
         <FormLabel>Email</FormLabel>
         <Input
@@ -84,7 +83,7 @@ export const Page_login = () => {
           onChange={(e) => setEmail(e.target.value)}
         ></Input>
       </FormControl>
-
+      {/* for password */}
       <FormControl id="password" isRequired>
         <FormLabel>Password</FormLabel>
         <InputGroup>
@@ -94,7 +93,7 @@ export const Page_login = () => {
             onChange={(e) => setPassword(e.target.value)}
           ></Input>
           <InputRightElement width={"4.5rem"}>
-            <Button h={"1.75rem"} size="sm" onClick={handleClick}>
+            <Button h={"1.75rem"} size="sm" onClick={handleClick} colorScheme={'purple'}>
               {show ? "hide" : "show"}
             </Button>
           </InputRightElement>
@@ -106,6 +105,7 @@ export const Page_login = () => {
         variant="ghost"
         onClick={submitHandler}
         isLoading={loading}
+        colorScheme={"purple"}
       >
         Login
       </Button>
@@ -114,6 +114,7 @@ export const Page_login = () => {
         rightIcon={<RxQuestionMark />}
         variant="ghost"
         onClick={submitHandler}
+        colorScheme={"purple"}
       >
         Forgot Password
       </Button>

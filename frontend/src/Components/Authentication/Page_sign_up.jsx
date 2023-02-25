@@ -97,9 +97,10 @@ const Page_sign_up = () => {
         isClosable: true,
         position: "bottom",
       });
+      setLoading(false);
       return;
     }
-    console.log(name,email,password,pic)
+    console.log(name, email, password, pic);
 
     try {
       const config = {
@@ -108,7 +109,7 @@ const Page_sign_up = () => {
         },
       };
 
-      const {data} = await axios.post(
+      const { data } = await axios.post(
         "/api/user",
         { name, email, password, pic },
         config
@@ -136,6 +137,7 @@ const Page_sign_up = () => {
     }
   };
   return (
+    
     <VStack spacing={"5px"}>
       <FormControl id="first-name" isRequired>
         <FormLabel>Name</FormLabel>
@@ -162,7 +164,7 @@ const Page_sign_up = () => {
             onChange={(e) => setPassword(e.target.value)}
           ></Input>
           <InputRightElement width={"4.5rem"}>
-            <Button h={"1.75rem"} size="sm" onClick={handleClick}>
+            <Button h={"1.75rem"} size="sm" onClick={handleClick} colorScheme={'purple'}>
               {show ? "hide" : "show"}
             </Button>
           </InputRightElement>
@@ -178,7 +180,7 @@ const Page_sign_up = () => {
             onChange={(e) => setConfirmPassword(e.target.value)}
           ></Input>
           <InputRightElement width={"4.5rem"}>
-            <Button h={"1.75rem"} size="sm" onClick={handleClick}>
+            <Button h={"1.75rem"} size="sm" onClick={handleClick} colorScheme={'purple'}>
               {show ? "hide" : "show"}
             </Button>
           </InputRightElement>
@@ -200,6 +202,7 @@ const Page_sign_up = () => {
         variant="ghost"
         onClick={submitHandler}
         isLoading={loading}
+        colorScheme={'purple'}
       >
         Sign Up
       </Button>
