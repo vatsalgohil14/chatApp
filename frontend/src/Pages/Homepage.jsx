@@ -4,9 +4,20 @@ import React from "react";
 import { Page_login } from "../Components/Authentication/Page_login";
 import Page_sign_up from "../Components/Authentication/Page_sign_up";
 import "../App.css";
-
+import { useHistory } from "react-router-dom";
+import { useEffect } from "react";
 
 const Homepage = () => {
+  const history = useHistory();
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("userInfo"));
+
+    if (user) {
+      history.push("/chats");
+    }
+  }, [history]);
+
+
   return (
     <Container maxW="xl" centerContent>
       <Box
@@ -23,7 +34,13 @@ const Homepage = () => {
           Talk
         </Text>
       </Box>
-      <Box w="100%" p={4} borderRadius="lg" borderWidth="1px" bg={"blackAlpha.50"}>
+      <Box
+        w="100%"
+        p={4}
+        borderRadius="lg"
+        borderWidth="1px"
+        bg={"blackAlpha.50"}
+      >
         <Tabs isFitted variant="soft-rounded" colorScheme={"purple"}>
           <TabList mb="1em">
             <Tab width={"50%"}>Login</Tab>
@@ -31,10 +48,10 @@ const Homepage = () => {
           </TabList>
           <TabPanels>
             <TabPanel>
-               <Page_login/>
+              <Page_login />
             </TabPanel>
             <TabPanel>
-              <Page_sign_up/>
+              <Page_sign_up />
             </TabPanel>
           </TabPanels>
         </Tabs>

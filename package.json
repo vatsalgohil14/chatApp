@@ -25,6 +25,7 @@
     "express-async-handler": "^1.2.0",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.8.4",
-    "react-icons": "^4.7.1"
+    "react-icons": "^4.7.1",
+    "socket.io": "^4.6.2"
   }
 }
