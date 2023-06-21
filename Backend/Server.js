@@ -8,11 +8,18 @@ const userRoutes = require("./Routes/userRoutes");
 const chatRoutes = require("./Routes/chatRoutes");
 const { notFound, errorHandler } = require("./Middleware/errorMiddleware");
 const messageRoutes = require("./Routes/messageRoutes");
+const cors = require("cors");
 
+const corsOptions = {
+  origin: "http://localhost:3000",
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
 const app = express();
 dotenv.config();
 connectDB();
 
+app.use(cors());
 app.use(express.json()); // to accept json data
 
 app.get("/", (req, res) => {
@@ -34,9 +41,7 @@ const server = app.listen(
 
 const io = require("socket.io")(server, {
   pingTimeout: 60000, // 60 seconds before ping timeou
-  cors: {
-    origin: "http://localhost:3000",
-  },
+  cors: corsOptions,
 });
 
 io.on("connection", (socket) => {
@@ -52,9 +57,8 @@ io.on("connection", (socket) => {
     console.log("joined room " + room);
   });
 
-
-   socket.on("typing", (room) => socket.in(room).emit("typing"));
-   socket.on("stop typing", (room) => socket.in(room).emit("stop typing"));
+  socket.on("typing", (room) => socket.in(room).emit("typing"));
+  socket.on("stop typing", (room) => socket.in(room).emit("stop typing"));
 
   socket.on("new message", (newMessageRecieved) => {
     var chat = newMessageRecieved.chat;
