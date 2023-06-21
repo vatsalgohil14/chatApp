@@ -1,6 +1,6 @@
 const expressAsyncHandler = require("express-async-handler");
 const { Error } = require("mongoose");
-const User = require("../models/userModel");
+const User = require("../Models/userModel");
 const generateToken = require("../Config/generateToken");
 
 
