@@ -8,8 +8,8 @@ import {
   InputRightElement,
   VStack,
 } from "@chakra-ui/react";
-import { HiArrowRight } from "react-icons/hi2";
-import { RxQuestionMark } from "react-icons/rx";
+import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
 import { useToast } from "@chakra-ui/react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
@@ -97,7 +97,7 @@ export const Page_login = () => {
         };
 
         const { data } = await axios.post(
-          "/api/user/login",
+          "https://chatapp-backend-t1jb.onrender.com/api/user/login",
           { email, password },
           config
         );
@@ -129,7 +129,7 @@ export const Page_login = () => {
   return (
     <VStack spacing={"5px"}>
       {/* For email */}
-      <FormControl id="email" isRequired>
+      <FormControl isRequired>
         <FormLabel>Email</FormLabel>
         <Input
           placeholder="Enter your Email:"
@@ -137,7 +137,7 @@ export const Page_login = () => {
         ></Input>
       </FormControl>
       {/* for password */}
-      <FormControl id="password" isRequired>
+      <FormControl isRequired>
         <FormLabel>Password</FormLabel>
         <InputGroup>
           <Input
@@ -146,7 +146,12 @@ export const Page_login = () => {
             onChange={(e) => setPassword(e.target.value)}
           ></Input>
           <InputRightElement width={"4.5rem"}>
-            <Button h={"1.75rem"} size="sm" onClick={handleClick} colorScheme={'purple'}>
+            <Button
+              h={"1.75rem"}
+              size="sm"
+              onClick={handleClick}
+              colorScheme={"purple"}
+            >
               {show ? "hide" : "show"}
             </Button>
           </InputRightElement>
@@ -154,7 +159,7 @@ export const Page_login = () => {
       </FormControl>
 
       <Button
-        rightIcon={<HiArrowRight />}
+        rightIcon={<ArrowRightAltIcon />}
         variant="ghost"
         onClick={submitHandler}
         isLoading={loading}
@@ -164,7 +169,7 @@ export const Page_login = () => {
       </Button>
 
       <Button
-        rightIcon={<RxQuestionMark />}
+        rightIcon={<QuestionMarkIcon />}
         variant="ghost"
         onClick={submitHandler}
         colorScheme={"purple"}
