@@ -21,7 +21,10 @@ const MyChats = ({fetchAgain}) => {
          },
        };
 
-       const { data } = await axios.get("/api/chat", config);
+       const { data } = await axios.get(
+         "https://chatapp-backend-t1jb.onrender.com/api/chat",
+         config
+       );
        setChats(data);
      } catch (error) {
        toast({
@@ -43,29 +46,29 @@ const MyChats = ({fetchAgain}) => {
 
   return (
     <Box
-      display={{ base: selectedChat ? "none" : "flex", md: "flex" }}
-      flexDirection="column"
+      dispaly={{ base: selectedChat ? "none" : "flex", md: "flex" }}
+      flexDir="column"
       alignItems="center"
       p={3}
-      bg={"white"}
+      bg="white"
       w={{ base: "100%", md: "31%" }}
-      borderRadius={"lg"}
-      borderWidth={"1px"}
+      borderRadius="lg"
+      borderWidth="1px"
     >
       <Box
         pb={3}
         px={3}
         fontSize={{ base: "28px", md: "30px" }}
-        fontFamily={"Work Sans"}
-        display={"flex"}
-        w={"100%"}
-        justifyContent={"space-between"}
-        alignItems={"center"}
+        fontFamily="Work sans"
+        display="flex"
+        w="100%"
+        justifyContent="space-between"
+        alignItems="center"
       >
         My Chats
         <GroupChatModal>
           <Button
-            d="flex"
+            display="flex"
             fontSize={{ base: "17px", md: "10px", lg: "17px" }}
             rightIcon={<AddIcon />}
           >
@@ -73,16 +76,15 @@ const MyChats = ({fetchAgain}) => {
           </Button>
         </GroupChatModal>
       </Box>
-
       <Box
         display={"flex"}
-        flexDirection={"column"}
+        flexDir="column"
         p={3}
         bg="#F8F8F8"
-        w={"100%"}
-        h={"100%"}
-        borderRadius={"lg"}
-        overflowY={"hidden"}
+        w="100%"
+        h="100%"
+        borderRadius="lg"
+        overflowY="hidden"
       >
         {chats ? (
           <Stack overflowY="scroll">
@@ -102,13 +104,13 @@ const MyChats = ({fetchAgain}) => {
                     ? getSender(loggedUser, chat.users)
                     : chat.chatName}
                 </Text>
+                
               </Box>
             ))}
           </Stack>
         ) : (
           <ChatLoading />
         )}
-        ;
       </Box>
     </Box>
   );

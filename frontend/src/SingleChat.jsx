@@ -14,7 +14,7 @@ import "./SingleChatStyle.css";
 import ScrollableChat from "./Components/ScrollableChat";
 import io from "socket.io-client";
 
-const ENDPOINT = "http://localhost:5001"; 
+const ENDPOINT = "https://chatapp-backend-t1jb.onrender.com"; 
 var socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
@@ -44,7 +44,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
       setLoading(true);
 
       const { data } = await axios.get(
-        `/api/message/${selectedChat._id}`,
+        `https://chatapp-backend-t1jb.onrender.com/api/message/${selectedChat._id}`,
         config
       );
 
@@ -78,7 +78,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         setNewMessage("");
 
         const { data } = await axios.post(
-          "/api/message",
+          "https://chatapp-backend-t1jb.onrender.com/api/message",
           {
             content: newMessage,
             chatId: selectedChat,
