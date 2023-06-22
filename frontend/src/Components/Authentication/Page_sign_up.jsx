@@ -9,7 +9,8 @@ import {
   Toast,
   VStack,
 } from "@chakra-ui/react";
-import { HiArrowRight } from "react-icons/hi2";
+import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+
 import { useToast } from "@chakra-ui/react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
@@ -110,7 +111,7 @@ const Page_sign_up = () => {
       };
 
       const { data } = await axios.post(
-        "/api/user",
+        "https://chatapp-backend-t1jb.onrender.com/api/user",
         { name, email, password, pic },
         config
       );
@@ -137,7 +138,6 @@ const Page_sign_up = () => {
     }
   };
   return (
-    
     <VStack spacing={"5px"}>
       <FormControl id="first-name" isRequired>
         <FormLabel>Name</FormLabel>
@@ -164,7 +164,12 @@ const Page_sign_up = () => {
             onChange={(e) => setPassword(e.target.value)}
           ></Input>
           <InputRightElement width={"4.5rem"}>
-            <Button h={"1.75rem"} size="sm" onClick={handleClick} colorScheme={'purple'}>
+            <Button
+              h={"1.75rem"}
+              size="sm"
+              onClick={handleClick}
+              colorScheme={"purple"}
+            >
               {show ? "hide" : "show"}
             </Button>
           </InputRightElement>
@@ -180,7 +185,12 @@ const Page_sign_up = () => {
             onChange={(e) => setConfirmPassword(e.target.value)}
           ></Input>
           <InputRightElement width={"4.5rem"}>
-            <Button h={"1.75rem"} size="sm" onClick={handleClick} colorScheme={'purple'}>
+            <Button
+              h={"1.75rem"}
+              size="sm"
+              onClick={handleClick}
+              colorScheme={"purple"}
+            >
               {show ? "hide" : "show"}
             </Button>
           </InputRightElement>
@@ -198,11 +208,11 @@ const Page_sign_up = () => {
       </FormControl>
 
       <Button
-        rightIcon={<HiArrowRight />}
+        rightIcon={<ArrowRightAltIcon />}
         variant="ghost"
         onClick={submitHandler}
         isLoading={loading}
-        colorScheme={'purple'}
+        colorScheme={"purple"}
       >
         Sign Up
       </Button>
